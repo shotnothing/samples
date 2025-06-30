@@ -44,5 +44,13 @@ Tasks:
           URI: "https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/CAD%20Result.png?raw=true"
           DisplayName: "CAD Result.png"
       Questions: []
+    - MessageUID: "mechanical-engineer-task1-message5"
+      Role: "Principal Engineer"
+      Content: "Let me know when you are done!"
+      Attachments: []
+      Questions:
+        - QuestionUID: "mechanical-engineer-task1-question1"
+        - QuestionType: "DoneButton"
+
 
 

@@ -1,0 +1,48 @@
+JobUID: "mechanical-engineer"
+DisplayName: "Mechanical Engineer"
+DisplayCategory: "Engineering"
+DisplayCoverImageURI: "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+DisplayDescriptionShort: "Mechanical Engineer is a professional who designs, develops, and tests mechanical systems and components."
+DisplayDescriptionLong: "Mechanical Engineer"
+DisplaySkillsRequired: ["Computer-Aided Design (CAD)"]
+AvailableNpcs: ["Principal Engineer", "HR Manager"]
+Tasks:
+- TaskUID: "mechanical-engineer-task1-drafting"
+  TaskType: 'Assignment'
+  Day: 1
+  EntryPoint: "mechanical-engineer-task1-message1"
+  Messages:
+    - MessageUID: "mechanical-engineer-task1-message1"
+      Role: "Principal Engineer"
+      Content: "Hello, welcome to the team! I am glad to have you here."
+      Attachments: []
+      Questions: []
+    - MessageUID: "mechanical-engineer-task1-message2"
+      Role: "Principal Engineer"
+      Content: "Your first task is to take a look at the following drawing."
+      Attachments: 
+        - AttachmentUID: "mechanical-engineer-task1-attachment1"
+          AttachmentType: "DownloadFile"
+          URI: "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+          DisplayName: "Drive Roller Assembly Sample-Layout1.pdf"
+        - AttachmentUID: "mechanical-engineer-task1-attachment2"
+          AttachmentType: "DownloadFile"
+          URI: "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+          DisplayName: "Drive Roller Assembly Sample.dwg"
+      Questions: []
+    - MessageUID: "mechanical-engineer-task1-message3"
+      Role: "Principal Engineer"
+      Content: "As a warm up, take close look at the diagram with the cutting plane D. Could you help me model this in SolidWorks?"
+      Attachments: []
+      Questions: []
+    - MessageUID: "mechanical-engineer-task1-message4"
+      Role: "Principal Engineer"
+      Content: "It should look a little like this:"
+      Attachments: 
+        - AttachmentUID: "mechanical-engineer-task1-attachment3"
+          AttachmentType: "DownloadFile"
+          URI: "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+          DisplayName: "CAD Result.png"
+      Questions: []
+
+

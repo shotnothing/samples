@@ -1,0 +1,85 @@
+Message Schema
+MessageUID: String
+
+Chatroom: String
+
+Role: String 
+(e.g. User, Manager, Tech Lead)
+
+Content: Markdown String
+(e.g. **Hello!**)
+
+Attachments: List<Attachment>
+(e.g. Download button for a PDF file, an image)
+
+Questions: List<Question>
+
+CreatedAt: Time
+(Not present in YAML, populated by backend)
+Attachment Types
+DownloadFile
+AttachmentUID: String
+URI: String (static hosting?)
+DisplayName: String
+UploadFile
+AttachmentUID: String
+DisplayUploadPrompt: String
+Image
+AttachmentUID: String
+URI: String (static hosting?)
+Video
+AttachmentUID: String
+URI: String (static hosting?)
+Question Types
+UserTextInput
+AttachmentUID: String
+DisplayLabel: String
+CorrectAnswer: Optional<String, String> (Answer, ResultExplanation)
+UserRadioInput
+AttachmentUID: String
+DisplayLabel: String
+Options: List<String, Optional<String>, Optional<Boolean>> (Label, ResultExplanation, IsCorrect)
+DoneButton
+AttachmentUID: String
+Task Schema
+Messages: List<Message>
+
+EntryPoint: String (MessageUID)
+
+TaskUID: String
+
+TaskType: Assignment | Event
+
+Day: Number
+Only for assignments.
+
+StartAt: Time in Seconds
+Only for events. Time in seconds after the start of the workday where the event is triggered.
+
+Duration: Optional<Time in Seconds>
+Only for events. Time in seconds after StartAt where the event is due. Todo: Message to trigger after the event is overdue.
+Job Schema
+Tasks: List<List<Task>>
+Per day, per task, in order.
+
+JobUID: String
+
+DisplayName: String
+
+DisplayCategory: String
+
+DisplayCoverImageURI: String
+
+DisplayDescriptionShort: String
+
+DisplayDescriptionLong: Markdown String
+
+DisplaySkillsRequired: List<String>
+
+AvailableNpcs: List<NpcConfig>
+How and who are the NPCs with open chatrooms with you
+NpcConfig
+NpcUID: String
+DisplayName: String
+Backend: LLM | Custom (we will have to think about this more)
+LLMContext (only for LLM): String (we will have to think about this more)

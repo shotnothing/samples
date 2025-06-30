@@ -19,7 +19,7 @@ Tasks:
       Questions: []
     - MessageUID: "mechanical-engineer-task1-message2"
       Role: "Principal Engineer"
-      Content: "Your first task is to take a look at the following drawing."
+      Content: "Your first task is to take a look at the following drawing. Note that the .dwg file is in AutoCAD format, so you will need to use AutoCAD-compatible software to open it."
       Attachments: 
         - AttachmentUID: "mechanical-engineer-task1-attachment1"
           AttachmentType: "DownloadFile"
@@ -28,7 +28,7 @@ Tasks:
         - AttachmentUID: "mechanical-engineer-task1-attachment2"
           AttachmentType: "DownloadFile"
           URI: "https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/Drive%20Roller%20Assembly%20Sample.dwg"
-          DisplayName: "Drive Roller Assembly Sample.dwg"
+          DisplayName: "AudoCAD Drive Roller Assembly Sample.dwg"
       Questions: []
     - MessageUID: "mechanical-engineer-task1-message3"
       Role: "Principal Engineer"

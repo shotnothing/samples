@@ -1,56 +1,81 @@
-JobUID: "mechanical-engineer"
-DisplayName: "Mechanical Engineer"
-DisplayCategory: "Engineering"
-DisplayCoverImageURI: "https://www.eit.edu.au/wp-content/uploads/2020/08/Mechanical-design-engineer-scaled-e1602462885714.jpeg"
-DisplayDescriptionShort: "Mechanical Engineer is a professional who designs, develops, and tests mechanical systems and components."
-DisplayDescriptionLong: "Mechanical Engineer"
-DisplaySkillsRequired: ["Computer-Aided Design (CAD)"]
-AvailableNpcs: ["Principal Engineer", "HR Manager"]
-Tasks: 
-- TaskUID: "mechanical-engineer-task1-drafting"
-  TaskType: 'Assignment'
-  Day: 1
-  EntryPoint: "mechanical-engineer-task1-message1"
-  Messages: 
-    - MessageUID: "mechanical-engineer-task1-message1"
-      Role: "Principal Engineer"
-      Content: "Hello, welcome to the team! I am glad to have you here."
-      Attachments: []
-      Questions: []
-    - MessageUID: "mechanical-engineer-task1-message2"
-      Role: "Principal Engineer"
-      Content: "Your first task is to take a look at the following drawing. Note that the .dwg file is in AutoCAD format, so you will need to use AutoCAD-compatible software to open it."
-      Attachments: 
-        - AttachmentUID: "mechanical-engineer-task1-attachment1"
-          AttachmentType: "DownloadFile"
-          URI: "https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/Drive%20Roller%20Assembly%20Sample-Layout1.pdf"
-          DisplayName: "Drive Roller Assembly Sample-Layout1.pdf"
-        - AttachmentUID: "mechanical-engineer-task1-attachment2"
-          AttachmentType: "DownloadFile"
-          URI: "https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/Drive%20Roller%20Assembly%20Sample.dwg"
-          DisplayName: "AudoCAD Drive Roller Assembly Sample.dwg"
-      Questions: []
-    - MessageUID: "mechanical-engineer-task1-message3"
-      Role: "Principal Engineer"
-      Content: "As a warm up, take close look at the diagram with the cutting plane D. Could you help me model this in SolidWorks?"
-      Attachments: []
-      Questions: []
-    - MessageUID: "mechanical-engineer-task1-message4"
-      Role: "Principal Engineer"
-      Content: "It should look a little like this:"
-      Attachments: 
-        - AttachmentUID: "mechanical-engineer-task1-attachment3"
-          AttachmentType: "DownloadFile"
-          URI: "https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/CAD%20Result.png?raw=true"
-          DisplayName: "CAD Result.png"
-      Questions: []
-    - MessageUID: "mechanical-engineer-task1-message5"
-      Role: "Principal Engineer"
-      Content: "Let me know when you are done!"
-      Attachments: []
-      Questions: 
-        - QuestionUID: "mechanical-engineer-task1-question1"
-          QuestionType: "DoneButton"
-
-
-
+job_uid: mechanical-engineer
+display_name: Mechanical Engineer
+display_category: Engineering
+display_cover_image_uri: https://www.eit.edu.au/wp-content/uploads/2020/08/Mechanical-design-engineer-scaled-e1602462885714.jpeg
+display_description_short: Mechanical Engineer is a professional who designs, develops, and tests mechanical systems and components.
+display_description_long: Mechanical Engineer
+display_skills_required:
+  - Computer-Aided Design (CAD)
+available_npcs:
+  - npc_uid: Principal Engineer
+    display_name: Principal Engineer
+tasks:
+  - - task_uid: mechanical-engineer-task1-drafting
+      task_type: assignment
+      day: 1
+      entry_point: mechanical-engineer-task1-message1
+      messages:
+        - message_uid: mechanical-engineer-task1-message1
+          role: Principal Engineer
+          chatroom: Principal Engineer
+          trigger: automatic
+          created_at: 0
+          next_message: mechanical-engineer-task1-message2
+          content: Hello, welcome to the team! I am glad to have you here.
+          attachments: []
+          questions: []
+        - message_uid: mechanical-engineer-task1-message2
+          role: Principal Engineer
+          chatroom: Principal Engineer
+          trigger: automatic
+          next_message: mechanical-engineer-task1-message3
+          created_at: 0
+          content: >
+            Your first task is to take a look at the following drawing. Note that
+            the .dwg file is in AutoCAD format, so you will need to use AutoCAD-compatible
+            software to open it.
+          attachments:
+            - attachment_uid: mechanical-engineer-task1-attachment1
+              type: Download
+              uri: https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/Drive%20Roller%20Assembly%20Sample-Layout1.pdf
+              display_name: Drive Roller Assembly Sample-Layout1.pdf
+            - attachment_uid: mechanical-engineer-task1-attachment2
+              type: Download
+              uri: https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/Drive%20Roller%20Assembly%20Sample.dwg
+              display_name: AudoCAD Drive Roller Assembly Sample.dwg
+          questions: []
+        - message_uid: mechanical-engineer-task1-message3
+          role: Principal Engineer
+          chatroom: Principal Engineer
+          trigger: automatic
+          next_message: mechanical-engineer-task1-message4
+          created_at: 0
+          content: >
+            As a warm up, take close look at the diagram with the cutting plane D.
+            Could you help me model this in SolidWorks?
+          attachments: []
+          questions: []
+        - message_uid: mechanical-engineer-task1-message4
+          role: Principal Engineer
+          chatroom: Principal Engineer
+          trigger: automatic
+          next_message: mechanical-engineer-task1-message5
+          created_at: 0
+          content: 'It should look a little like this:'
+          attachments:
+            - attachment_uid: mechanical-engineer-task1-attachment3
+              type: Download
+              uri: https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/CAD%20Result.png?raw=true
+              display_name: CAD Result.png
+          questions: []
+        - message_uid: mechanical-engineer-task1-message5
+          role: Principal Engineer
+          chatroom: Principal Engineer
+          trigger: terminal
+          created_at: 0
+          next_message: mechanical-engineer-task1-message6
+          content: Let me know when you are done!
+          attachments: []
+          questions:
+            - attachment_uid: mechanical-engineer-task1-question1
+              type: DoneButton 

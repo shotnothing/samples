@@ -6,12 +6,12 @@ DisplayDescriptionShort: "Mechanical Engineer is a professional who designs, dev
 DisplayDescriptionLong: "Mechanical Engineer"
 DisplaySkillsRequired: ["Computer-Aided Design (CAD)"]
 AvailableNpcs: ["Principal Engineer", "HR Manager"]
-Tasks:
+Tasks: 
 - TaskUID: "mechanical-engineer-task1-drafting"
   TaskType: 'Assignment'
   Day: 1
   EntryPoint: "mechanical-engineer-task1-message1"
-  Messages:
+  Messages: 
     - MessageUID: "mechanical-engineer-task1-message1"
       Role: "Principal Engineer"
       Content: "Hello, welcome to the team! I am glad to have you here."
@@ -48,9 +48,9 @@ Tasks:
       Role: "Principal Engineer"
       Content: "Let me know when you are done!"
       Attachments: []
-      Questions:
+      Questions: 
         - QuestionUID: "mechanical-engineer-task1-question1"
-        - QuestionType: "DoneButton"
+          QuestionType: "DoneButton"
 
 
 

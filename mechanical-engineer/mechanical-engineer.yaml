@@ -77,5 +77,6 @@ tasks:
           content: Let me know when you are done!
           attachments: []
           questions:
-            - attachment_uid: mechanical-engineer-task1-question1
-              type: DoneButton 
+            - question_uid: question_01
+              attachment_uid: mechanical-engineer-task1-question1
+              type: DoneButton

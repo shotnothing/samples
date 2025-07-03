@@ -1,0 +1,275 @@
+job_uid: afc-analyst-day1
+display_name: Anti-Financial-Crime Analyst – Day 1
+display_description_short: Onboard, vet loan contracts, crack a trade-based ML case.
+display_description_long: |
+  Day-one simulation for a new AFC analyst in a Singapore bank.  
+  • HR orientation and AFC basics.  
+  • Review four loan-facility drafts for AML clauses.  
+  • Investigate a “Plastic Toy” outbound-wire fraud and identify the mastermind.  
+  • Handle front-office push-back and escalate to Country Head.
+display_category: Compliance / AML
+display_cover_image_uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/cover_afc_day1.jpg
+display_skills_required:
+  - Analytical reasoning
+  - AML/CFT knowledge
+  - Attention to detail
+
+available_npcs:
+  - npc_uid: hr
+    display_name: "HR Executive"
+  - npc_uid: manager
+    display_name: "Team Manager"
+  - npc_uid: country_head
+    display_name: "Country AML Head (MLRO)"
+  - npc_uid: investigator
+    display_name: "Special Investigator"
+  - npc_uid: rm
+    display_name: "Relationship Manager John Sim"
+
+tasks:
+  - # -------- Day 0  (all tasks) ------------------------------------------
+    # 1 .1  HR onboarding ---------------------------------------------------
+    - task_uid: task-1-1
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-1-welcome
+      start_at: 0
+      duration: 600          # 10 min
+      messages:
+        - message_uid: msg-1-1-welcome
+          role: HR Executive
+          chatroom: HR
+          created_at: 0
+          next_message: msg-1-1-done
+          content: |
+            Hi and welcome aboard!  
+            Please skim our AFC Handbook to learn your role and upcoming projects.  
+            Click **Done** when you’ve finished.
+          attachments:
+            - attachment_uid: file-afc-handbook
+              type: Download
+              display_name: "AFC Handbook.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/loan%20facility%20task/AFC_Handbook.pdf
+          questions:
+            - type: DoneButton
+              question_uid: btn-1-1-done
+          trigger: donebutton
+
+        - message_uid: msg-1-1-done
+          role: HR Executive
+          chatroom: HR
+          trigger: donebutton
+          created_at: 0
+          next_message: task-1-2::msg-1-2-welcome
+          content: "Great—orientation complete. Your manager will brief you next."
+          attachments: []
+          questions: []
+
+    # 1 .2  Manager intro ---------------------------------------------------
+    - task_uid: task-1-2
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-2-welcome
+      start_at: 600
+      duration: 900          # 15 min
+      messages:
+        - message_uid: msg-1-2-welcome
+          role: Team Manager
+          chatroom: Manager
+          created_at: 0
+          next_message: msg-1-2-done
+          content: |
+            Welcome!  
+            Our AFC unit has three core teams—Transaction Monitoring, Special Investigations, and Country AML/MLRO.  
+            Read the quick primer below, then hit **Done**.
+          attachments:
+            - attachment_uid: file-afc-primer
+              type: Download
+              display_name: "AFC Team Primer (1-pager).pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/loan%20facility%20task/AFC_Handbook.pdf#page=2  # re-uses handbook page 2
+          questions:
+            - type: DoneButton
+              question_uid: btn-1-2-done
+          trigger: donebutton
+
+        - message_uid: msg-1-2-done
+          role: Team Manager
+          chatroom: Manager
+          trigger: automatic
+          created_at: 0
+          next_message: task-1-3::msg-1-3-brief
+          content: |
+            Nice. Next up: an easy contract-vetting exercise to learn the ropes.
+          attachments: []
+          questions: []
+
+    # 1 .3  Loan-facility vetting -------------------------------------------
+    - task_uid: task-1-3
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-3-brief
+      start_at: 1500
+      duration: 1200         # 20 min
+      messages:
+        - message_uid: msg-1-3-brief
+          role: Country AML Head (MLRO)
+          chatroom: Country Head
+          created_at: 0
+          next_message: msg-1-3-feedback
+          content: |
+            Here are four draft loan agreements.  
+            Compare each to the handbook table of required AML clauses and list any contracts that must be sent back to external counsel for correction.  
+            *Return Contract IDs only* (e.g. `LA_003_UK`).
+          attachments:
+            - attachment_uid: la-001
+              type: Download
+              display_name: "LA_001_HK.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/loan%20facility%20task/LA_001_HK.pdf
+            - attachment_uid: la-002
+              type: Download
+              display_name: "LA_002_SG.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/loan%20facility%20task/LA_002_SG.pdf
+            - attachment_uid: la-003
+              type: Download
+              display_name: "LA_003_UK.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/loan%20facility%20task/LA_003_UK.pdf
+            - attachment_uid: la-004
+              type: Download
+              display_name: "LA_004_AU.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/loan%20facility%20task/LA_004_AU.pdf
+          questions:
+            - type: TextInput
+              question_uid: input-loan-ids
+              display_label: "Enter contract IDs to revert"
+              correct_answer: "LA_003_UK"     # only UK draft is faulty
+            - type: DoneButton
+              question_uid: btn-1-3-done
+          trigger: donebutton
+
+        - message_uid: msg-1-3-feedback
+          role: Country AML Head (MLRO)
+          chatroom: Country Head
+          trigger: automatic
+          created_at: 0
+          next_message: task-1-4::msg-1-4-setup
+          content: |
+            Spot-on—UK counsel missed the proper AML clause.  
+            Now for something spicier: a trade-based money-laundering alert.
+          attachments: []
+          questions: []
+
+    # 1 .4  Plastic-Toy fraud investigation ---------------------------------
+    - task_uid: task-1-4
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-4-setup
+      start_at: 3000
+      duration: 1500         # 25 min
+      messages:
+        - message_uid: msg-1-4-setup
+          role: Special Investigator
+          chatroom: Investigations
+          created_at: 0
+          next_message: msg-1-4-passport
+          content: |
+            Got a fun case. Review the resource pack and tell me:  
+            **(1)** Which outbound wire (TxnID) looks dodgy?  
+            **(2)** Whose passport number proves who’s behind it? (9 chars)  
+            We’ll escalate if our answers match.
+          attachments:
+            - attachment_uid: ow
+              type: Download
+              display_name: "Outbound_Wires.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Plastic%20Toys%20fraud/Outbound_Wires.pdf
+            - attachment_uid: bol
+              type: Download
+              display_name: "Bill_of_Ladings.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Plastic%20Toys%20fraud/Bill_of_Ladings.pdf
+            - attachment_uid: bo
+              type: Download
+              display_name: "Beneficial_Owner_profiles.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Plastic%20Toys%20fraud/Beneficial_Owner_profiles.pdf
+            - attachment_uid: price
+              type: Download
+              display_name: "Commodity_reference_prices.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Plastic%20Toys%20fraud/Commodity_reference_prices.pdf
+          questions:
+            - type: TextInput
+              question_uid: input-txnid
+              display_label: "Suspicious TxnID"
+              correct_answer: "115"
+            - type: DoneButton
+              question_uid: btn-1-4-part1
+          trigger: donebutton
+
+        - message_uid: msg-1-4-passport
+          role: Special Investigator
+          chatroom: Investigations
+          created_at: 0
+          next_message: msg-1-4-thanks
+          content: "Nice pick. Now type the passport number of the mastermind."
+          attachments: []
+          questions:
+            - type: TextInput
+              question_uid: input-passport
+              display_label: "Passport number"
+              correct_answer: "K12345678"
+            - type: DoneButton
+              question_uid: btn-1-4-part2
+          trigger: donebutton
+
+        - message_uid: msg-1-4-thanks
+          role: Special Investigator
+          chatroom: Investigations
+          trigger: automatic
+          created_at: 0
+          next_message: task-1-5::msg-1-5-rm
+          content: |
+            Perfect—we’ll brief the MLRO. Brace for front-office noise…
+          attachments: []
+          questions: []
+
+    # 1 .5  Angry relationship-manager chat -------------------------------
+    - task_uid: task-1-5
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-5-rm
+      start_at: 4800
+      duration: 300           # 5 min
+      messages:
+        - message_uid: msg-1-5-rm
+          role: Relationship Manager John Sim
+          chatroom: Front Office
+          created_at: 0
+          next_message: msg-1-5-escalate
+          content: |
+            Hey—are you new? My VIP client’s USD 5 m is frozen.  
+            Fix this \emph{today} or explain to management why we lose him!
+          attachments: []
+          questions:
+            - type: DoneButton
+              question_uid: btn-1-5-ignore
+              display_label: "Escalate to Country Head"
+          trigger: donebutton
+
+        - message_uid: msg-1-5-escalate
+          role: Country AML Head (MLRO)
+          chatroom: Country Head
+          trigger: automatic
+          created_at: 0
+          next_message: msg-1-5-end
+          content: |
+            Good call not responding with details.  
+            I’ll handle the RM tomorrow—rest up, you earned it.
+          attachments: []
+          questions: []
+
+        - message_uid: msg-1-5-end
+          role: Country AML Head (MLRO)
+          chatroom: Country Head
+          trigger: terminal
+          created_at: 0
+          next_message: null
+          content: "**End of Day 1** — see you in the morning."
+          attachments: []
+          questions: []

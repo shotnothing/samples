@@ -1,0 +1,23 @@
+job_uid: product-manager
+display_name: Product Manager
+display_category: Product Management
+display_cover_image_uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/images.jpg
+display_description_short: Onboard with HR, map scam scenarios, review OKRs, and run SQL.
+display_description_long: |
+  Your first simulated day as a Product Manager at DayOne.  
+  • HR orientation and handbook review.  
+  • Map three real-world phone-scam scenarios.  
+  • Critique GuardianCall Q3 OKRs.  
+  • Help Marketing run SQL metrics in MotherDuck.
+display_skills_required:
+  - Critical thinking
+available_npcs:
+  - npc_uid: hr-exec
+    display_name: HR Executive
+  - npc_uid: manager
+    display_name: Team Manager
+  - npc_uid: principal_pm
+    display_name: Principal PM
+  - npc_uid: marketing
+    display_name: Marketing Specialist
+tasks: []

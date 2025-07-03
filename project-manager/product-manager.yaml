@@ -1,7 +1,5 @@
 job_uid: product-manager
 display_name: Product Manager
-display_category: Product Management
-display_cover_image_uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/images.jpg
 display_description_short: Onboard with HR, map scam scenarios, review OKRs, and run SQL.
 display_description_long: |
   Your first simulated day as a Product Manager at DayOne.  
@@ -9,15 +7,238 @@ display_description_long: |
   • Map three real-world phone-scam scenarios.  
   • Critique GuardianCall Q3 OKRs.  
   • Help Marketing run SQL metrics in MotherDuck.
+display_category: Product Management
+display_cover_image_uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/images.jpg
 display_skills_required:
   - Critical thinking
+
 available_npcs:
   - npc_uid: hr-exec
-    display_name: HR Executive
+    display_name: "HR Executive"
   - npc_uid: manager
-    display_name: Team Manager
+    display_name: "Team Manager"
   - npc_uid: principal_pm
-    display_name: Principal PM
+    display_name: "Principal PM"
   - npc_uid: marketing
-    display_name: Marketing Specialist
-tasks: []
+    display_name: "Marketing Specialist"
+
+tasks:
+  -  # Day 0 – all tasks
+    - task_uid: task-1-1
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-1-welcome
+      start_at: 0
+      duration: 600            # 10 min
+      messages:
+        - message_uid: msg-1-1-welcome
+          role: HR Executive
+          chatroom: HR
+          created_at: 0
+          next_message: msg-1-1-mission-list
+          content: |
+            Hi there and welcome aboard!  
+            Skim the handbook below to understand your role and the project you'll be jumping into.  
+            Click **Done** when you're finished.
+          attachments:
+            - attachment_uid: file-prod-mgr-101
+              type: Download
+              display_name: "Product Manager 101.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/OGP.pdf
+          questions:
+            - type: DoneButton
+              question_uid: btn-1-1-welcome-done
+          trigger: donebutton
+
+        - message_uid: msg-1-1-mission-list
+          role: HR Executive
+          chatroom: HR
+          created_at: 0
+          next_message: msg-1-1-done
+          content: |
+            Everything should take ~10 minutes.  
+            Ping me if anything's missing, then hit **Done**.
+          attachments: []
+          questions:
+            - type: DoneButton
+              question_uid: btn-1-1-mission-done
+          trigger: donebutton
+
+        - message_uid: msg-1-1-done
+          role: HR Executive
+          chatroom: HR
+          trigger: donebutton
+          created_at: 0
+          next_message: task-1-2::msg-1-2-welcome
+          content: |
+            All set. 
+          attachments: []
+          questions: []
+
+    - task_uid: task-1-2
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-2-welcome
+      start_at: 600
+      duration: 1200           # 20 min
+      messages:
+        - message_uid: msg-1-2-welcome
+          role: manager
+          chatroom: Manager
+          created_at: 0
+          next_message: msg-1-2-praise
+          content: |
+            Welcome to your first day with us!
+
+            As a **Product Manager** you'll often explore the problems faced by our users.  
+            Our current focus is *phone scams*.
+
+            1. Read the articles below.  
+            2. Draft **three scam scenarios** you notice.  
+            3. Submit them in the text box and click **Done**.
+          attachments:
+            - attachment_uid: file-scam-articles
+              type: Download
+              display_name: "Scam Articles.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Scam_Articles.pdf
+          questions:
+            - type: TextInput
+              question_uid: input-scam-scenarios
+              display_label: "Describe three scam scenarios you found"
+              correct_answer: null
+            - type: DoneButton
+              question_uid: btn-1-2-scam-done
+          trigger: donebutton
+
+        - message_uid: msg-1-2-praise
+          role: manager
+          chatroom: Manager
+          trigger: automatic
+          created_at: 0
+          next_message: task-1-3::msg-1-3-greeting
+          content: |
+            **Great job!** That's it from me today.  
+            Heads-up: some teammates may ping you for help later. 👀
+          attachments: []
+          questions: []
+
+    - task_uid: task-1-3
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-3-greeting
+      start_at: 1800
+      duration: 2400           # 40 min
+      messages:
+        - message_uid: msg-1-3-greeting
+          role: principal_pm
+          chatroom: Principal Product Manager
+          created_at: 0
+          next_message: msg-1-3-okr-thanks
+          content: |
+            Hey!
+
+            We need a quick polish on our **draft OKRs** for *GuardianCall Q3*.
+
+            1. Open the draft below.  
+            2. Spend 2 minutes spotting what's wrong.  
+            3. Drop feedback in the text box and click **Done**.
+
+            Need a refresher? → https://quantive.com/resources/articles/how-to-write-okrs
+          attachments:
+            - attachment_uid: file-okr-draft
+              type: Download
+              display_name: "OKR Draft.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/OKR_Draft.pdf
+          questions:
+            - type: TextInput
+              question_uid: input-okr-feedback
+              display_label: "What's wrong with these OKRs?"
+              correct_answer: null
+            - type: DoneButton
+              question_uid: btn-1-3-okr-done
+          trigger: donebutton
+
+        - message_uid: msg-1-3-okr-thanks
+          role: principal_pm
+          chatroom: Principal Product Manager
+          trigger: automatic
+          created_at: 0
+          next_message: msg-1-3-sql-brief
+          content: |
+            **Good job!** Thanks for the quick review. 🙌  
+            Let's hop over to Marketing—they need user numbers.
+          attachments: []
+          questions: []
+
+        - message_uid: msg-1-3-sql-brief
+          role: marketing
+          chatroom: Marketing Specialist
+          created_at: 0
+          next_message: msg-1-3-sql-praise
+          content: |
+            Phew – you arrived just in time!
+
+            Marketing needs two quick queries for tonight's board deck.
+
+            **SQL Crash-Course**  
+            • **SELECT** – choose columns or calculations  
+            • **FROM** – pick the table  
+            • **WHERE** – filter rows  
+            • **COUNT(*)** – count rows  
+            • **ORDER BY ... DESC** – newest → oldest  
+            • **LIMIT 5** – take the first five rows
+
+            ***Getting connected***  
+            1. Create a free MotherDuck account.  
+            2. New cell →
+               ```sql
+               ATTACH 'md:_share/dayone_db/dde544fd-0f4f-4bde-b02c-579582bf02e9';
+               ```  
+            3. Verify connection with:
+               ```sql
+               SELECT COUNT(*) FROM viditation_user_big;
+               ```
+
+            **Questions to answer**
+
+            **Q1 – Singapore users**  
+            ```sql
+            SELECT COUNT(*) AS sg_users
+            FROM   viditation_user_big
+            WHERE  country_iso = '???';  -- replace ??? with SG
+            ```
+
+            **Q2 – Five newest sign-ups**  
+            ```sql
+            SELECT user_id, created_date
+            FROM   viditation_user_big
+            ORDER BY created_date DESC
+            LIMIT 5;
+            ```
+          attachments: []
+          questions:
+            - type: TextInput
+              question_uid: input-sql-q1
+              display_label: "Q1 • sg_users result"
+              correct_answer: null
+            - type: TextInput
+              question_uid: input-sql-q2
+              display_label: "Q2 • list of 5 newest rows"
+              correct_answer: null
+            - type: DoneButton
+              question_uid: btn-1-3-sql-done
+          trigger: donebutton
+
+        - message_uid: msg-1-3-sql-praise
+          role: marketing
+          chatroom: Marketing Specialist
+          trigger: terminal
+          created_at: 0
+          next_message: null
+          content: |
+            **Awesome – numbers look good!**  
+            Thanks for bailing us out.
+
+            That wraps up your first day. See you tomorrow!
+          attachments: []
+          questions: []

@@ -1,0 +1,126 @@
+job_uid: finance-manager
+display_name: Finance Manager
+display_category: Finance
+display_cover_image_uri: https://github.com/Blimperoo/OGP_PM_Assets/blob/main/Who-is-a-company-Auditor.png?raw=true
+display_description_short: Finance Managers oversee payroll, compliance, and reporting to ensure the financial health of the organization.
+display_description_long: |
+  As a Finance Manager, you are responsible for managing payroll,
+  ensuring compliance with government regulations, creating reports,
+  and supporting budgeting operations.
+display_skills_required:
+  - Excel
+  - Tax Law
+
+available_npcs:
+  - npc_uid: hr
+    display_name: HR
+  - npc_uid: manager
+    display_name: Manager
+
+tasks:
+  -                                   # ───── Day 1 ──────────────────────────
+    - task_uid: finance-manager-task1
+      task_type: assignment
+      day: 1
+      entry_point: finance-manager-task1-message1
+
+      messages:
+        # ── 1. Welcome ─────────────────────────────────────────────────────
+        - message_uid: finance-manager-task1-message1
+          role: HR
+          chatroom: HR
+          trigger: automatic
+          created_at: 0
+          next_message: finance-manager-task1-message2
+          content: |
+            **TASK 1 – Welcome to Your Role**
+
+            Hello! 👋  
+            Look through this handbook to learn more about your role as a
+            Finance Manager. It’ll give you a good overview before we begin
+            the real tasks!
+
+            _(For demo purposes, refer to the first page only.)_
+          attachments:
+            - attachment_uid: finance-manager-handbook
+              type: Download
+              uri: https://docs.google.com/document/d/1tTTB5Z0x9bGqZ33_QjBrzui3o5ZdWmznpu0SGUCH8m0/edit?usp=sharing
+              display_name: Finance Manager Job Scope.docx
+          questions: []
+
+        # ── 2. Read the Regulations ────────────────────────────────────────
+        - message_uid: finance-manager-task1-message2
+          role: Manager
+          chatroom: Manager
+          trigger: automatic
+          created_at: 0
+          next_message: finance-manager-task1-message3
+          content: |
+            Welcome to the team! For your first task, please read up on
+            IRAS CPF rules and the MOM Employment Act. These laws guide how
+            we pay employees correctly.
+
+            **TASK 1.1 – Read IRAS CPF rules & MOM Employment Act**
+          attachments:
+            - attachment_uid: iras-link
+              type: Download
+              uri: https://www.iras.gov.sg/taxes/individual-income-tax/employers/understanding-the-tax-treatment/central-provident-fund-(cpf)-contributions
+              display_name: IRAS CPF Contribution
+            - attachment_uid: mom-link
+              type: Download
+              uri: https://www.mom.gov.sg/employment-practices
+              display_name: MOM Employment Act Overview
+          questions: []
+
+        # ── 3. Payroll Exercise ────────────────────────────────────────────
+        - message_uid: finance-manager-task1-message3
+          role: Manager
+          chatroom: Manager
+          trigger: automatic
+          created_at: 0
+          next_message: finance-manager-task1-message4
+          content: |
+            Great! Now I need your help calculating this month’s payroll.
+
+            **TASK 1.2 – Calculate Monthly Payroll (Excel)**
+          attachments:
+            - attachment_uid: payroll-excel
+              type: Download
+              uri: https://entuedu-my.sharepoint.com/:x:/g/personal/ctan288_e_ntu_edu_sg/EUMIBQErQcFOn-rACZTsWogBDsXjDSzsvDbhpGPhwDGwZQ?e=OO8ksw
+              display_name: Monthly Payroll.xlsx
+            - attachment_uid: excel-video
+              type: Download
+              uri: https://youtu.be/Jx89DRlKe7E?feature=shared
+              display_name: How to Create a Pivot Table (Video)
+          questions: []
+
+        # ── 4. Learner confirms completion ─────────────────────────────────
+        - message_uid: finance-manager-task1-message4
+          role: Manager
+          chatroom: Manager
+          trigger: terminal
+          created_at: 0
+          next_message: finance-manager-task1-message5
+          content: Let me know when you are done!
+          attachments: []
+          questions:
+            - question_uid: finance-manager-task1-donebutton
+              type: DoneButton
+
+        # ── 5. Praise & Example Pivot ──────────────────────────────────────
+        - message_uid: finance-manager-task1-message5
+          role: Manager
+          chatroom: Manager
+          trigger: automatic
+          created_at: 0
+          next_message: null
+          content: |
+            Good job! Your analysis is invaluable for our expense planning.  
+            Here’s what a finished pivot table might look like – check
+            **Sheet 2** for the layout.
+          attachments:
+            - attachment_uid: pivot-example-sheet
+              type: Download
+              uri: https://entuedu-my.sharepoint.com/:x:/g/personal/ctan288_e_ntu_edu_sg/EUMIBQErQcFOn-rACZTsWogBDsXjDSzsvDbhpGPhwDGwZQ?e=OO8ksw
+              display_name: Monthly Payroll (Example Pivot)
+          questions: []

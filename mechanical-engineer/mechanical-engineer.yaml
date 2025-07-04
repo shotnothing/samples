@@ -64,7 +64,7 @@ tasks:
           content: 'It should look a little like this:'
           attachments:
             - attachment_uid: mechanical-engineer-task1-attachment3
-              type: Download
+              type: Image
               uri: https://github.com/shotnothing/samples/blob/main/mechanical-engineer/task1-drafting/CAD%20Result.png?raw=true
               display_name: CAD Result.png
           questions: []

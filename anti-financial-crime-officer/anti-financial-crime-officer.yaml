@@ -240,7 +240,7 @@ tasks:
           next_message: msg-1-5-escalate
           content: |
             Hey — my VIP’s USD 5 m is frozen.  
-            Fix this \emph{today} or explain to management why we lose him!
+            Fix this **today** or explain to management why we lose him!
           attachments: []
           questions:
             - type: DoneButton

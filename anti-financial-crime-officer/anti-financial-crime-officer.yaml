@@ -58,7 +58,7 @@ tasks:
         - message_uid: msg-1-1-done
           role: HR Executive
           chatroom: HR
-          trigger: donebutton
+          trigger: automatic
           created_at: 0
           next_message: task-1-2::msg-1-2-welcome
           content: "Great — orientation complete. Your manager will brief you next."

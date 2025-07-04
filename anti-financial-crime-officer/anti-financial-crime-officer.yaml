@@ -24,7 +24,7 @@ available_npcs:
   - npc_uid: investigator
     display_name: "Special Investigator"
   - npc_uid: rm
-    display_name: "Relationship Manager John Sim"
+    display_name: "Relationship Manager"
 
 tasks:
   - # ─────────────── Day 0 ­­──────────────────────────────────────────────
@@ -234,7 +234,7 @@ tasks:
       duration: 300          # 5 min
       messages:
         - message_uid: msg-1-5-rm
-          role: Relationship Manager John Sim
+          role: Relationship Manager
           chatroom: Front Office
           created_at: 0
           next_message: msg-1-5-escalate

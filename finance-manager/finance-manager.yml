@@ -1,0 +1,146 @@
+JobUID: "finance-manager"
+DisplayName: "Finance Manager"
+DisplayCategory: "Finance"
+DisplayCoverImageURI: "https://github.com/Blimperoo/OGP_PM_Assets/blob/main/Who-is-a-company-Auditor.png?raw=true"
+DisplayDescriptionShort: "Finance Managers oversee payroll, compliance, and reporting to ensure the financial health of the organization."
+DisplayDescriptionLong: "As a Finance Manager, you are responsible for managing payroll, ensuring compliance with government regulations, creating reports, and supporting budgeting operations."
+DisplaySkillsRequired: ["Excel", "Singapore CPF/Tax Rules"]
+AvailableNpcs: ["HR", "Manager"]
+
+Tasks:
+- TaskUID: "finance-manager-task1-onboarding"
+  TaskType: "Onboarding"
+  Day: 1
+  EntryPoint: "finance-manager-task1-message1"
+  Messages:
+    - MessageUID: "finance-manager-task1-message1"
+      Role: "HR"
+      Content: |
+        **TASK 1 – Welcome to Your Role**
+
+        Hello! 👋  
+        Look through this handbook to learn more about your role as a Finance Manager. It’ll give you a good overview before we begin the real tasks!
+
+        For demo purposes, refer to the first page only.
+      Attachments:
+        - AttachmentUID: "finance-manager-handbook"
+          AttachmentType: "Link"
+          DisplayName: "Finance Manager Job Scope.docx"
+          URI: "https://docs.google.com/document/d/1tTTB5Z0x9bGqZ33_QjBrzui3o5ZdWmznpu0SGUCH8m0/edit?usp=sharing"
+      Trigger: Auto
+      NextMessage: "finance-manager-task1-message2"
+
+    - MessageUID: "finance-manager-task1-message2"
+      Role: "Manager"
+      Content: |
+        Welcome to the team! For your first task, I want you to read up on IRAS CPF rules and the MOM Employment Act. These are basic laws that guide how we pay employees correctly.
+
+        **TASK 1.1 – Read up on IRAS CPF rules and MOM Employment Act**
+      Attachments:
+        - AttachmentUID: "iras-link"
+          AttachmentType: "Link"
+          DisplayName: "IRAS CPF Contribution"
+          URI: "https://www.iras.gov.sg/taxes/individual-income-tax/employers/understanding-the-tax-treatment/central-provident-fund-(cpf)-contributions"
+        - AttachmentUID: "mom-link"
+          AttachmentType: "Link"
+          DisplayName: "MOM Employment Act Overview"
+          URI: "https://www.mom.gov.sg/employment-practices"
+      Trigger: Auto
+      NextMessage: "finance-manager-task1-message3"
+
+    - MessageUID: "finance-manager-task1-message3"
+      Role: "Manager"
+      Content: |
+        Great! Now that you’ve finished reading, I’ll need your help calculating the monthly payroll for our employees.
+
+        **TASK 1.2 – Calculate the Monthly Payroll Using Excel**
+      Attachments:
+        - AttachmentUID: "payroll-excel"
+          AttachmentType: "DownloadFile"
+          DisplayName: "Monthly Payroll.xlsx"
+          URI: "https://entuedu-my.sharepoint.com/:x:/g/personal/ctan288_e_ntu_edu_sg/EUMIBQErQcFOn-rACZTsWogBDsXjDSzsvDbhpGPhwDGwZQ?e=OO8ksw"
+        - AttachmentUID: "excel-video"
+          AttachmentType: "Video"
+          DisplayName: "How to Create a Pivot Table in Excel"
+          URI: "https://youtu.be/Jx89DRlKe7E?feature=shared"
+      Trigger: Auto
+      NextMessage: "finance-manager-task1-player-input"
+
+    - MessageUID: "finance-manager-task1-player-input"
+      Role: "User"
+      Content: "_Enter your answer based on the payroll Excel sheet…_"
+      Trigger: Terminal
+      EvalConfig:
+        model: "gpt-4o-mini"
+        system_prompt: |
+          You are a payroll data evaluator.
+          Compare PLAYER_ANSWER to FACTS.
+          If player identifies the correct value,
+          return {"verdict":"correct","analysis":"good filtering and calculation"}.
+          If they are close (one to three answers correct),
+          return {"verdict":"partial","analysis":"partially correct, check filter or formula"}.
+          If incorrect or unrelated to the dataset,
+          return {"verdict":"wrong","analysis":"check dataset and try again"}.
+        facts: payroll_answers
+      Questions:
+        - id: q1
+          prompt: "What is the total base pay for employees in the Admin department?"
+          answer_type: "numeric"
+        - id: q2
+          prompt: "What is the total CPF (Employer) contribution for all employees?"
+          answer_type: "numeric"
+        - id: q3
+          prompt: "Which department has the highest total net pay?"
+          answer_type: "text"
+      OutcomeMap:
+        correct: m_npc_praise
+        partial: m_npc_hint
+        wrong: m_npc_answer
+      NextMessage: m_npc_answer
+
+    - MessageUID: m_npc_praise
+      Role: Manager
+      Content: |
+        Good job! This information is helpful for our expenses planning. Thank you for your thorough analysis!
+      Trigger: Auto
+      NextMessage: m_npc_pivot_example
+
+    - MessageUID: m_npc_hint
+      Role: Manager
+      Content: |
+        Looks like you’ve gotten some question(s) correct — good start! Please review the Excel Skills video and give it another try.
+      Trigger: Button
+      NextMessage: finance-manager-task1-player-input
+
+    - MessageUID: m_npc_answer
+      Role: Manager
+      Content: |
+        Here are the correct answers:  
+        Q1 – $131,552  
+        Q2 – $126,724.12  
+        Q3 – IT  
+
+        It takes practice to improve, so don’t be discouraged. Good effort!
+      Trigger: Auto
+      NextMessage: m_npc_pivot_example
+
+payroll_answers:
+  - question_id: q1
+    expected_value: 131552
+  - question_id: q2
+    expected_value: 126724.12
+  - question_id: q3
+    expected_value: "IT"
+
+     - MessageUID: m_npc_pivot_example
+      Role: Manager
+      Content: |
+        Here is what your pivot table might look like!  
+        Please refer to **Sheet 2** in the Excel file for an example layout.
+      Attachments:
+        - AttachmentUID: "pivot-example-sheet"
+          AttachmentType: "DownloadFile"
+          DisplayName: "Monthly Payroll.xlsx"
+          URI: "https://entuedu-my.sharepoint.com/:x:/g/personal/ctan288_e_ntu_edu_sg/EUMIBQErQcFOn-rACZTsWogBDsXjDSzsvDbhpGPhwDGwZQ?e=OO8ksw"
+      Trigger: Auto
+      NextMessage: session_end

@@ -141,7 +141,6 @@ tasks:
             - type: TextInput
               question_uid: input-loan-ids
               display_label: "Enter contract IDs to revert"
-              correct_answer: "LA_003_UK"
             - type: DoneButton
               question_uid: btn-1-3-done
           trigger: donebutton
@@ -196,7 +195,6 @@ tasks:
             - type: TextInput
               question_uid: input-txnid
               display_label: "Suspicious TxnID"
-              correct_answer: "115"
             - type: DoneButton
               question_uid: btn-1-4-part1
           trigger: donebutton
@@ -212,7 +210,6 @@ tasks:
             - type: TextInput
               question_uid: input-passport
               display_label: "Passport number"
-              correct_answer: "K12345678"
             - type: DoneButton
               question_uid: btn-1-4-part2
           trigger: donebutton

@@ -16,7 +16,7 @@ available_npcs:
   - npc_uid: manager
     display_name: Manager
 
-is_featured: true
+is_featured: false
 
 tasks:
   -                                   # ───── Day 1 ──────────────────────────

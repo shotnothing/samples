@@ -12,8 +12,8 @@ display_skills_required:
   - Tax Law
 
 available_npcs:
-  - npc_uid: hr
-    display_name: HR
+  - npc_uid: HR Manager
+    display_name: HR Manager
   - npc_uid: manager
     display_name: Manager
 
@@ -27,8 +27,8 @@ tasks:
       messages:
         # ── 1. Welcome ─────────────────────────────────────────────────────
         - message_uid: finance-manager-task1-message1
-          role: HR
-          chatroom: HR
+          role: HR Manager
+          chatroom: HR Manager
           trigger: automatic
           created_at: 0
           next_message: finance-manager-task1-message2

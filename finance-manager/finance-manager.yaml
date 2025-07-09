@@ -17,6 +17,8 @@ available_npcs:
   - npc_uid: manager
     display_name: Manager
 
+is_featured: true
+
 tasks:
   -                                   # ───── Day 1 ──────────────────────────
     - task_uid: finance-manager-task1

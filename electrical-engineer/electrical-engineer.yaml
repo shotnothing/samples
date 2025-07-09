@@ -1,0 +1,13 @@
+job_uid: electrical-engineer
+display_name: Electrical Engineer
+display_category: Engineering
+display_cover_image_uri: https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/43b5N2vPEIWvcqHHnAPs9W/a1c27d9ca50ba42bab5ef392064212e4/iStock-996179448.jpg?w=1500&h=680&q=60&fit=fill&f=faces&fm=jpg&fl=progressive&auto=format%2Ccompress&dpr=1&w=1000
+display_description_short: Electrical Engineer is a professional who designs, develops, and maintains electrical systems and components.
+display_description_long: Electrical Engineer
+display_skills_required:
+- Circuit Design
+- Power Systems
+- Electronics
+available_npcs: []
+tasks: []
+is_featured: false 

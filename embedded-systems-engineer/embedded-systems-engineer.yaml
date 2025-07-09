@@ -1,0 +1,13 @@
+job_uid: embedded-systems-engineer
+display_name: Embedded Systems Engineer
+display_category: Engineering
+display_cover_image_uri: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/DHCOM_Computer_On_Module_-_AM35x.jpg/1200px-DHCOM_Computer_On_Module_-_AM35x.jpg
+display_description_short: Embedded Systems Engineer is a professional who designs and develops software for embedded systems and microcontrollers.
+display_description_long: Embedded Systems Engineer
+display_skills_required:
+- C/C++
+- Microcontrollers
+- Real-time Systems
+available_npcs: []
+tasks: []
+is_featured: false 

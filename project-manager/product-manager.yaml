@@ -22,6 +22,8 @@ available_npcs:
   - npc_uid: Marketing Associate
     display_name: "Marketing Associate"
 
+is_featured: true
+
 tasks:
   -  # Day 0 – all tasks
     - task_uid: task-1-1

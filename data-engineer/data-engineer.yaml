@@ -2,7 +2,11 @@ job_uid: data-engineer
 display_name: Data Engineer
 display_category: Data
 display_cover_image_uri: https://source.unsplash.com/featured/?data-engineer
-display_description_short: Data Engineer is a professional who designs and builds scalable data pipelines and infrastructure.
+display_description_short: Data Engineer is a professional who designs and builds
+  scalable data pipelines and infrastructure.
 display_description_long: Data Engineer
 display_skills_required:
-  - ETL Development
+- ETL Development
+available_npcs: []
+tasks: []
+is_featured: false

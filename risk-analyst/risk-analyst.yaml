@@ -2,7 +2,11 @@ job_uid: risk-analyst
 display_name: Risk Analyst
 display_category: Data
 display_cover_image_uri: https://source.unsplash.com/featured/?risk-analyst
-display_description_short: Risk Analyst is a professional who identifies, assesses, and mitigates financial and operational risks using data.
+display_description_short: Risk Analyst is a professional who identifies, assesses,
+  and mitigates financial and operational risks using data.
 display_description_long: Risk Analyst
 display_skills_required:
-  - Risk Modeling
+- Risk Modeling
+available_npcs: []
+tasks: []
+is_featured: false

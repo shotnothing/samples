@@ -2,7 +2,11 @@ job_uid: corporate-communications-executive
 display_name: Corporate Communications Executive
 display_category: Marketing
 display_cover_image_uri: https://source.unsplash.com/featured/?corporate-communications-executive
-display_description_short: Corporate Communications Executive is a professional who manages internal and external corporate messaging and media relations.
+display_description_short: Corporate Communications Executive is a professional who
+  manages internal and external corporate messaging and media relations.
 display_description_long: Corporate Communications Executive
 display_skills_required:
-  - Media Relations
+- Media Relations
+available_npcs: []
+tasks: []
+is_featured: false

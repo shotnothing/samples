@@ -2,7 +2,11 @@ job_uid: talent-acquisition
 display_name: Talent Acquisition
 display_category: People
 display_cover_image_uri: https://source.unsplash.com/featured/?talent-acquisition
-display_description_short: Talent Acquisition is a professional who sources, screens, and hires candidates to meet workforce needs.
+display_description_short: Talent Acquisition is a professional who sources, screens,
+  and hires candidates to meet workforce needs.
 display_description_long: Talent Acquisition
 display_skills_required:
-  - Recruitment Sourcing
+- Recruitment Sourcing
+available_npcs: []
+tasks: []
+is_featured: false

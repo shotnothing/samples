@@ -2,7 +2,11 @@ job_uid: acquisition-executive
 display_name: Acquisition Executive
 display_category: Business Development
 display_cover_image_uri: https://source.unsplash.com/featured/?acquisition-executive
-display_description_short: Acquisition Executive is a professional who identifies and secures new customers through targeted campaigns.
+display_description_short: Acquisition Executive is a professional who identifies
+  and secures new customers through targeted campaigns.
 display_description_long: Acquisition Executive
 display_skills_required:
-  - Customer Acquisition
+- Customer Acquisition
+available_npcs: []
+tasks: []
+is_featured: false

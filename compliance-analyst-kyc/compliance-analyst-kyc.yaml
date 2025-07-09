@@ -2,7 +2,11 @@ job_uid: compliance-analyst-kyc
 display_name: Compliance Analyst - KYC
 display_category: Compliance
 display_cover_image_uri: https://source.unsplash.com/featured/?compliance-analyst-kyc
-display_description_short: Compliance Analyst - KYC is a professional who performs Know-Your-Customer reviews to ensure regulatory compliance.
+display_description_short: Compliance Analyst - KYC is a professional who performs
+  Know-Your-Customer reviews to ensure regulatory compliance.
 display_description_long: Compliance Analyst - KYC
 display_skills_required:
-  - AML Regulations
+- AML Regulations
+available_npcs: []
+tasks: []
+is_featured: false

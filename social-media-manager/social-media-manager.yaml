@@ -2,7 +2,11 @@ job_uid: social-media-manager
 display_name: Social Media Manager
 display_category: Marketing
 display_cover_image_uri: https://source.unsplash.com/featured/?social-media-manager
-display_description_short: Social Media Manager is a professional who plans and executes social-media strategies to build brand engagement.
+display_description_short: Social Media Manager is a professional who plans and executes
+  social-media strategies to build brand engagement.
 display_description_long: Social Media Manager
 display_skills_required:
-  - Content Strategy
+- Content Strategy
+available_npcs: []
+tasks: []
+is_featured: false

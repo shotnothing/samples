@@ -2,7 +2,11 @@ job_uid: backend-developer
 display_name: Backend Developer
 display_category: Technology
 display_cover_image_uri: https://source.unsplash.com/featured/?backend-developer
-display_description_short: Backend Developer is a professional who builds and maintains server-side application logic and APIs.
+display_description_short: Backend Developer is a professional who builds and maintains
+  server-side application logic and APIs.
 display_description_long: Backend Developer
 display_skills_required:
-  - RESTful API Development
+- RESTful API Development
+available_npcs: []
+tasks: []
+is_featured: false

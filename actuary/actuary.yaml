@@ -2,7 +2,11 @@ job_uid: actuary
 display_name: Actuary
 display_category: Accounting
 display_cover_image_uri: https://source.unsplash.com/featured/?actuary
-display_description_short: Actuary is a professional who applies statistical and financial theory to evaluate risk and uncertainty.
+display_description_short: Actuary is a professional who applies statistical and financial
+  theory to evaluate risk and uncertainty.
 display_description_long: Actuary
 display_skills_required:
-  - Actuarial Modeling
+- Actuarial Modeling
+available_npcs: []
+tasks: []
+is_featured: false

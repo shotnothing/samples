@@ -2,7 +2,11 @@ job_uid: business-development
 display_name: Business Development
 display_category: Business Development
 display_cover_image_uri: https://source.unsplash.com/featured/?business-development
-display_description_short: Business Development is a professional who creates and nurtures strategic opportunities to drive revenue growth.
+display_description_short: Business Development is a professional who creates and
+  nurtures strategic opportunities to drive revenue growth.
 display_description_long: Business Development
 display_skills_required:
-  - Lead Generation
+- Lead Generation
+available_npcs: []
+tasks: []
+is_featured: false

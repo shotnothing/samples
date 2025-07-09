@@ -2,7 +2,11 @@ job_uid: site-reliability-engineer
 display_name: Site Reliability Engineer
 display_category: Engineering
 display_cover_image_uri: https://source.unsplash.com/featured/?site-reliability-engineer
-display_description_short: Site Reliability Engineer is a professional who ensures reliability, scalability, and performance of production systems.
+display_description_short: Site Reliability Engineer is a professional who ensures
+  reliability, scalability, and performance of production systems.
 display_description_long: Site Reliability Engineer
 display_skills_required:
-  - Infrastructure Automation
+- Infrastructure Automation
+available_npcs: []
+tasks: []
+is_featured: false

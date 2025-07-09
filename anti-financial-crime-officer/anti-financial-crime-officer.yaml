@@ -26,6 +26,8 @@ available_npcs:
   - npc_uid: rm
     display_name: "Relationship Manager"
 
+is_featured: true
+
 tasks:
   - # ─────────────── Day 0 ­­──────────────────────────────────────────────
     # 1.1  HR onboarding

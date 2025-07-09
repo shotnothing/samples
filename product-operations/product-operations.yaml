@@ -1,0 +1,8 @@
+job_uid: product-operations
+display_name: Product Operations
+display_category: Product
+display_cover_image_uri: https://source.unsplash.com/featured/?product-operations
+display_description_short: Product Operations is a professional who bridges product, engineering, and support teams to optimize product delivery and performance.
+display_description_long: Product Operations
+display_skills_required:
+  - Product Lifecycle Management (PLM)

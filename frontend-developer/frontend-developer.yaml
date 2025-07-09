@@ -1,0 +1,8 @@
+job_uid: frontend-developer
+display_name: Frontend Developer
+display_category: Technology
+display_cover_image_uri: https://source.unsplash.com/featured/?frontend-developer
+display_description_short: Frontend Developer is a professional who develops and optimizes user-facing web interfaces.
+display_description_long: Frontend Developer
+display_skills_required:
+  - React

@@ -1,0 +1,8 @@
+job_uid: machine-learning-engineer
+display_name: Machine Learning Engineer
+display_category: Technology
+display_cover_image_uri: https://source.unsplash.com/featured/?machine-learning-engineer
+display_description_short: Machine Learning Engineer is a professional who builds, deploys, and maintains machine-learning models in production.
+display_description_long: Machine Learning Engineer
+display_skills_required:
+  - TensorFlow/PyTorch

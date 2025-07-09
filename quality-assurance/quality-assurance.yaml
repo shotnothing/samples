@@ -1,0 +1,8 @@
+job_uid: quality-assurance
+display_name: Quality Assurance
+display_category: Engineering
+display_cover_image_uri: https://source.unsplash.com/featured/?quality-assurance
+display_description_short: Quality Assurance is a professional who ensures products meet required standards through testing and process improvements.
+display_description_long: Quality Assurance
+display_skills_required:
+  - Quality Management Systems

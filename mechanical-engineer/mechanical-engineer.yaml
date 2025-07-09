@@ -9,6 +9,7 @@ display_skills_required:
 available_npcs:
   - npc_uid: Principal Engineer
     display_name: Principal Engineer
+is_featured: true
 tasks:
   - - task_uid: mechanical-engineer-task1-drafting
       task_type: assignment

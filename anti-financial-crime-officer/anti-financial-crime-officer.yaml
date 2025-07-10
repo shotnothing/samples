@@ -165,7 +165,7 @@ tasks:
           chatroom: AMLRO
           created_at: 0
           next_message: msg-1-2-qualifications
-          content: "Here’s a quick diagram:"
+          content: "Here’s the complicated, but more common method:"
           attachments:
             - attachment_uid: ml-diagram
               type: Image

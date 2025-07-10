@@ -1,7 +1,7 @@
 job_uid: cuda-engineer
 display_name: CUDA Engineer
 display_category: Technology
-display_cover_image_uri: https://blogs.nvidia.com/wp-content/uploads/2012/09/cuda-apps-and-libraries.png
+display_cover_image_uri: https://github.com/shotnothing/dayone-watercolor-placeholders/blob/main/cuda.png?raw=true
 display_description_short: CUDA Engineer is a professional who develops and optimizes parallel computing applications using NVIDIA's CUDA platform.
 display_description_long: CUDA Engineer
 display_skills_required:

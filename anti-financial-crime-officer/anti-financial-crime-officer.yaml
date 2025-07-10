@@ -469,7 +469,7 @@ tasks:
               type: Download
               display_name: "LA_005_CA.pdf"
               uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/LA_005_CA.pdf
-              - attachment_uid: guidebook
+            - attachment_uid: guidebook
               type: Download
               display_name: "Guidebook.pdf"
               uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/AFC_Handbook.pdf

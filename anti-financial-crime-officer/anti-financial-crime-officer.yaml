@@ -168,7 +168,7 @@ tasks:
           content: "Here’s a quick diagram:"
           attachments:
             - attachment_uid: ml-diagram
-              type: Download
+              type: Image
               display_name: "Money-Laundering Flow.png"
               uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/ml_dummy_diagram.png
           questions:

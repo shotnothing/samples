@@ -389,10 +389,22 @@ tasks:
         - message_uid: msg-1-3-end
           role: Francesca (TM Analyst)
           chatroom: TM Desk
-          trigger: terminal
+          trigger: donebutton
           created_at: 0
-          next_message: null
+          next_message: msg-1-done
           content: |
             I'll ping you if another transaction pops up. Check back!
           attachments: []         
-          questions: []            
+          questions:
+            - type: DoneButton
+              question_uid: "Got it!"             
+
+        - message_uid: msg-1-done
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          trigger: terminal
+          created_at: 0
+          next_message: null
+          content: ""
+          attachments: []         
+          questions: []        

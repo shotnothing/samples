@@ -1,273 +1,404 @@
 job_uid: anti-financial-crime-officer
-display_name: Anti-Financial-Crime Analyst
-display_description_short: Onboard, vet loan contracts, crack a trade-based ML case.
-display_description_long: |
-  Day-one simulation for a new AFC analyst in a Singapore bank.  
-  • HR orientation and AFC basics.  
-  • Review four loan-facility drafts for AML clauses.  
-  • Investigate a “Plastic Toy” outbound-wire fraud and identify the mastermind.  
-  • Handle front-office push-back and escalate to Country Head.
+display_name: Anti-Financial-Crime Officer
 display_category: Compliance
-display_cover_image_uri: https://cdn.prod.website-files.com/68062741f13fc24108f2ab64/6821f46a9c6fd95fc1c611d0_themis-ai-in-anti-financial-crime.png
+display_description_short: Learn about Anti-Financial Crime teams and how they function.
+display_description_long: |
+  TBC
+display_cover_image_uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/5749e3b5b16dd8ebccab13e98bb359cb.jpg   # swap in a real image
 display_skills_required:
   - Analytical reasoning
-  - AML/CFT knowledge
-  - Attention to detail
+  - Awareness of transactions and contracts
 
 available_npcs:
-  - npc_uid: hr
-    display_name: "HR Executive"
   - npc_uid: manager
     display_name: "Team Manager"
-  - npc_uid: country_head
-    display_name: "Country AML Head (MLRO)"
-  - npc_uid: investigator
-    display_name: "Special Investigator"
-  - npc_uid: rm
-    display_name: "Relationship Manager"
+  - npc_uid: francesca
+    display_name: "Francesca (TM Analyst)"
 
-is_featured: true
+
+is_featured: true   # optional
 
 tasks:
-  - # ─────────────── Day 0 ­­──────────────────────────────────────────────
-    # 1.1  HR onboarding
+  -
     - task_uid: task-1-1
       task_type: assignment
       day: 0
       entry_point: msg-1-1-welcome
-      start_at: 0
-      duration: 600          # 10 min
+      start_at: 0           # seconds from start of Day 0
+      duration: 600         # 10 min
       messages:
+        # 1️⃣ Welcome and “Say hi!” button
         - message_uid: msg-1-1-welcome
-          role: HR Executive
-          chatroom: HR
+          role: Team Manager
+          chatroom: Manager
           created_at: 0
-          next_message: msg-1-1-done
-          content: |
-            Hi and welcome aboard!  
-            Please skim our AFC Handbook to learn your role and upcoming projects.  
-            Click **Done** when you’ve finished.
-          attachments:
-            - attachment_uid: file-afc-handbook
-              type: Download
-              display_name: "AFC Handbook.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/AFC_Handbook.pdf
+          next_message: msg-0-intro
+          content: "Hi, welcome to the team!"
+          attachments: []
           questions:
             - type: DoneButton
-              question_uid: btn-1-1-done
+              question_uid: "Nice to meet you!"
+              display_label: "Say hi!"
+          trigger: automatic
+
+        # 2️⃣ Manager replies, begins primer
+        - message_uid: msg-0-intro
+          role: Team Manager
+          chatroom: Manager
+          created_at: 0
+          next_message: msg-0-team-overview
+          content: |
+            Hi! Nice to meet you 🙂  
+            Since it's your first day, I'll catch you up to speed.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        # 3️⃣ Team overview + “Got it!” button
+        - message_uid: msg-0-team-overview
+          role: Team Manager
+          chatroom: Manager
+          created_at: 5
+          next_message: msg-0-farewell
+          content: |
+            The Anti-Financial-Crime team helps banks and their clients tackle
+            general criminal threats and other high-risk activity.
+
+            **How the sub-teams break down**
+            • *Policy*: interpret regulations and brief the business  
+            • *Ops & Analytics*: run day-to-day monitoring and risk assessment  
+            • *Investigations (FCIU/FIU)*: deep-dive intelligence work
+
+            You'll work mainly with Ops and FCIU, so no need to master every
+            regulation at once.  
+            Your goal today is simply to learn how banks detect and prevent
+            financial crime.
+          attachments:
+            - attachment_uid: afc-org-chart
+              type: Image
+              display_name: "AFC Team Interaction Diagram"
+              uri: https://github.com/Blimperoo/OGP_PM_Assets/raw/main/Untitled%20diagram%20_%20Mermaid%20Chart-2025-07-10-071310.png
+
+          questions:
+            - type: DoneButton
+              question_uid: "Got it!"
+              display_label: "Got it!"
           trigger: donebutton
 
-        - message_uid: msg-1-1-done
-          role: HR Executive
-          chatroom: HR
+
+        - message_uid: msg-0-farewell
+          role: Team Manager
+          chatroom: Manager
           trigger: automatic
           created_at: 0
-          next_message: msg-1-2-welcome
-          content: "Great — orientation complete. Your manager will brief you next."
+          next_message: msg-1-2-hi
+          content: "Have fun!!!"
           attachments: []
           questions: []
 
-    # 1.2  Manager intro
     - task_uid: task-1-2
       task_type: assignment
       day: 0
-      entry_point: msg-1-2-welcome
-      start_at: 600
-      duration: 900          # 15 min
+      entry_point: msg-1-2-hi
+      start_at: 610          # begins right after the first task
+      duration: 900
       messages:
-        - message_uid: msg-1-2-welcome
-          role: Team Manager
-          chatroom: Manager
+        - message_uid: msg-1-2-hi
+          role: Jean (AMLRO)
+          chatroom: AMLRO
           created_at: 0
-          next_message: msg-1-2-done
+          next_message: msg-1-2-supervisor
+          content: "Hi!"
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-2-supervisor
+          role: Jean (AMLRO)
+          chatroom: AMLRO
+          created_at: 0
+          next_message: msg-1-2-role
+          content: "I'm Jean, your direct supervisor."
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-2-role
+          role: Jean (AMLRO)
+          chatroom: AMLRO
+          created_at: 0
+          next_message: msg-1-2-explain-aml
           content: |
-            Welcome!  
-            Our AFC unit has three core teams — Transaction Monitoring, Special Investigations, and Country AML/MLRO.  
-            Read the quick primer below, then hit **Done**.
-          attachments:
-            - attachment_uid: file-afc-primer
-              type: Download
-              display_name: "AFC Team Primer.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/AFC_Handbook.pdf#page=2
+            Actually, I'm also the country AMLRO — I oversee all AML activities
+            and handle any external enquiries.
+          attachments: []
           questions:
             - type: DoneButton
-              question_uid: btn-1-2-done
+              question_uid: btn-what-aml
+              display_label: "AML?"
           trigger: donebutton
 
-        - message_uid: msg-1-2-done
-          role: Team Manager
-          chatroom: Manager
+        - message_uid: msg-1-2-explain-aml
+          role: Jean (AMLRO)
+          chatroom: AMLRO
+          created_at: 0
+          next_message: msg-1-2-ml-analogy
+          content: |
+            Sure. AML means anti-money-laundering. Our team reviews several
+            thousand transactions every day to spot potential laundering.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-2-ml-analogy
+          role: Jean (AMLRO)
+          chatroom: AMLRO
+          created_at: 0
+          next_message: msg-1-2-diagram
+          content: |
+            Think of it this way: if you stole \$100, dumping it into your
+            account in one go looks fishy. But splitting it into \$20 transfers
+            over a month makes it blend in. That’s a simple laundering tactic.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-2-diagram
+          role: Jean (AMLRO)
+          chatroom: AMLRO
+          created_at: 0
+          next_message: msg-1-2-qualifications
+          content: "Here’s a quick diagram:"
+          attachments:
+            - attachment_uid: ml-diagram
+              type: Download
+              display_name: "Money-Laundering Flow.png"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/ml_dummy_diagram.png
+          questions:
+            - type: DoneButton
+              question_uid: btn-diagram-ok
+              display_label: "Makes sense!"
+          trigger: donebutton
+
+        - message_uid: msg-1-2-qualifications
+          role: Jean (AMLRO)
+          chatroom: AMLRO
+          created_at: 0
+          next_message: msg-1-2-redflags
+          content: |
+            Most officers here come from accounting or law backgrounds, or hold
+            certs like CAMS or an ICA diploma—but you don’t need those yet.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-2-redflags
+          role: Jean (AMLRO)
+          chatroom: AMLRO
+          created_at: 0
+          next_message: msg-1-2-end
+          content: |
+            Skim this handy summary of red flags—you’ll use it in later tasks.
+          attachments:
+            - attachment_uid: red-flags
+              type: Download
+              display_name: "AML Red Flags.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/AML_Red_Flags.pdf
+          questions:
+            - type: DoneButton
+              question_uid: btn-redflags-ok
+              display_label: "Okay!"
+          trigger: donebutton
+
+        - message_uid: msg-1-2-end
+          role: Jean (AMLRO)
+          chatroom: AMLRO
           trigger: automatic
           created_at: 0
-          next_message: msg-1-3-brief
+          next_message: msg-1-3-hey
           content: |
-            Nice. Next up: an easy contract-vetting exercise to learn the ropes.
+            Great! Francesca will send some transactions for your review next.
+            All the best!
           attachments: []
           questions: []
 
-    # 1.3  Loan-facility vetting
+# ─── New task right after task-1-2 ──────────────────────────────────
     - task_uid: task-1-3
       task_type: assignment
       day: 0
-      entry_point: msg-1-3-brief
-      start_at: 1500
-      duration: 1200         # 20 min
+      entry_point: msg-1-3-hey
+      start_at: 1520        # starts after Jean’s briefing
+      duration: 1800
+
       messages:
-        - message_uid: msg-1-3-brief
-          role: Country AML Head (MLRO)
-          chatroom: Country Head
+        - message_uid: msg-1-3-hey
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
           created_at: 0
-          next_message: msg-1-3-feedback
+          next_message: msg-1-3-thanks
+          content: "Heyyy\nI'm drowning in work rn. R u free to take over some adhoc txn screening tasks?"
+          attachments: []
+          questions:
+            - type: DoneButton
+              question_uid: btn-free
+              display_label: "Sure!"
+          trigger: donebutton
+
+        - message_uid: msg-1-3-thanks
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-3-explain1
+          content: "Ahhhh thanks!!!! :-)\nHere's one!"
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-3-explain1
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-3-explain2
+          content: "Oh.. hold up. Lemme explain to you what's going on."
+          attachments: []
+          questions:
+            - type: DoneButton
+              question_uid: btn-explain
+              display_label: "Sure!"
+          trigger: donebutton
+
+        - message_uid: msg-1-3-explain2
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-3-analogy
           content: |
-            Here are four draft loan agreements.  
-            Compare each to the handbook table of required AML clauses and list any contracts that must be sent back to external counsel for correction.  
-            *Return Contract IDs only* (e.g. `LA_003_UK`).
+            Say you wanna send five bucks to a friend.
+            We’re the bank in charge of your account, so you’d tell us to send
+            that \$5 with a reason like: “paying my friend back for caifan.”
+            That's clearly legit, so we’d let it through.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-3-analogy
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-3-highvalue
+          content: |
+            Makes sense?
+          attachments: []
+          questions:
+            - type: DoneButton
+              question_uid: btn-analogy-ok
+              display_label: "Yeah!"
+          trigger: donebutton
+
+        - message_uid: msg-1-3-highvalue
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-3-onelink
+          content: |
+            Now, if you sent your friend \$100 000, that’s super weird! We’d
+            probably freeze it and escalate.
+            But we can’t freeze things just on vibes—we need evidence, so we use
+            a tool called OneLink to see all the context.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-3-onelink
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-3-onelink-link
+          content: "Here’s the OneLink portal."
           attachments:
-            - attachment_uid: la-001
+            - attachment_uid: onelink-url
               type: Download
-              display_name: "LA_001_HK.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/LA_001_HK.pdf
-            - attachment_uid: la-002
-              type: Download
-              display_name: "LA_002_SG.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/LA_002_SG.pdf
-            - attachment_uid: la-003
-              type: Download
-              display_name: "LA_003_UK.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/LA_003_UK.pdf
-            - attachment_uid: la-004
-              type: Download
-              display_name: "LA_004_AU.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/LA_004_AU.pdf
+              display_name: "Open OneLink"
+              uri: https://aml-dashboard-5a7j.onrender.com/
           questions:
-            - type: TextInput
-              question_uid: input-loan-ids
-              display_label: "Enter contract IDs to revert"
             - type: DoneButton
-              question_uid: btn-1-3-done
+              question_uid: btn-onelink-ok
+              display_label: "Got it!"
           trigger: donebutton
 
-        - message_uid: msg-1-3-feedback
-          role: Country AML Head (MLRO)
-          chatroom: Country Head
-          trigger: automatic
+        - message_uid: msg-1-3-onelink-link
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
           created_at: 0
-          next_message: msg-1-4-setup
+          next_message: msg-1-3-instructions
           content: |
-            Spot-on — UK counsel missed the proper AML clause.  
-            Now for something spicier: a trade-based money-laundering alert.
+            The first transaction ID is **201**.
+            Use OneLink to check the beneficial owners of both accounts.
+            Freeze the transaction if you find anything strange; otherwise
+            release it.
           attachments: []
           questions: []
+          trigger: automatic
 
-    # 1.4  Plastic-Toy fraud investigation
-    - task_uid: task-1-4
-      task_type: assignment
-      day: 0
-      entry_point: msg-1-4-setup
-      start_at: 3000
-      duration: 1500         # 25 min
-      messages:
-        - message_uid: msg-1-4-setup
-          role: Special Investigator
-          chatroom: Investigations
+
+        - message_uid: msg-1-3-instructions
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
           created_at: 0
-          next_message: msg-1-4-passport
+          next_message: null            
           content: |
-            Fun case. Review the pack and tell me:  
-            **(1)** Which outbound wire (TxnID) looks dodgy?  
-            **(2)** Whose passport number proves who’s behind it? (9 chars)
-          attachments:
-            - attachment_uid: ow
-              type: Download
-              display_name: "Outbound_Wires.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Outbound_Wires.pdf
-            - attachment_uid: bol
-              type: Download
-              display_name: "Bill_of_Ladings.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Bill_of_Ladings.pdf
-            - attachment_uid: bo
-              type: Download
-              display_name: "Beneficial_Owner_profiles.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Beneficial_Owner_profiles.pdf
-            - attachment_uid: price
-              type: Download
-              display_name: "Commodity_reference_prices.pdf"
-              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/Commodity_reference_prices.pdf
-          questions:
-            - type: TextInput
-              question_uid: input-txnid
-              display_label: "Suspicious TxnID"
-            - type: DoneButton
-              question_uid: btn-1-4-part1
-          trigger: donebutton
-
-        - message_uid: msg-1-4-passport
-          role: Special Investigator
-          chatroom: Investigations
-          created_at: 0
-          next_message: msg-1-4-thanks
-          content: "Nice pick. Now enter the passport number of the mastermind."
+            Once you're done, type **Freeze** or **Release** below!
           attachments: []
           questions:
             - type: TextInput
-              question_uid: input-passport
-              display_label: "Passport number"
+              question_uid: input-freeze-release
+              display_label: "Freeze or Release"
+              correct_answer:
+                answer: "Freeze"
+                result_explanation: "Chen Wei is on a UN sanctions list ⇒ transaction must be frozen."
+              
             - type: DoneButton
-              question_uid: btn-1-4-part2
+              question_uid: btn-submit
+              display_label: "Submit"
           trigger: donebutton
+          message_choice:
+            correct_uid: msg-1-3-right
+            wrong_uid:   msg-1-3-wrong
 
-        - message_uid: msg-1-4-thanks
-          role: Special Investigator
-          chatroom: Investigations
+
+        - message_uid: msg-1-3-right
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
           trigger: automatic
           created_at: 0
-          next_message: msg-1-5-rm
+          next_message: msg-1-3-end
           content: |
-            Perfect — MLRO briefed. Brace for front-office noise…
-          attachments: []
-          questions: []
+            You're right! Nice work — Chen Wei, the beneficial owner of
+            Sunshine Corp, appears on the UN sanctions list. We definitely
+            shouldn’t let this one through. Good job!
+          attachments: []          
+          questions: []           
 
-    # 1.5  Angry relationship-manager chat
-    - task_uid: task-1-5
-      task_type: assignment
-      day: 0
-      entry_point: msg-1-5-rm
-      start_at: 4800
-      duration: 300          # 5 min
-      messages:
-        - message_uid: msg-1-5-rm
-          role: Relationship Manager
-          chatroom: Front Office
-          created_at: 0
-          next_message: msg-1-5-escalate
-          content: |
-            Hey — my VIP’s USD 5 m is frozen.  
-            Fix this **today** or explain to management why we lose him!
-          attachments: []
-          questions:
-            - type: DoneButton
-              question_uid: btn-1-5-ignore
-              display_label: "Escalate to Country Head"
-          trigger: donebutton
-
-        - message_uid: msg-1-5-escalate
-          role: Country AML Head (MLRO)
-          chatroom: Country Head
+        - message_uid: msg-1-3-wrong
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
           trigger: automatic
           created_at: 0
-          next_message: msg-1-5-end
+          next_message: msg-1-3-end
           content: |
-            Good call not sharing details.  
-            I’ll handle the RM tomorrow—rest up, you earned it.
-          attachments: []
-          questions: []
+            Good effort, but you missed a detail. Chen Wei — the beneficial
+            owner of Sunshine Corp — is on the UN sanctions list for terrorist
+            affiliation, so this transaction must be frozen.
+          attachments: []          
+          questions: []            
 
-        - message_uid: msg-1-5-end
-          role: Country AML Head (MLRO)
-          chatroom: Country Head
+        - message_uid: msg-1-3-end
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
           trigger: terminal
           created_at: 0
           next_message: null
-          content: "**End of Day 1** — see you in the morning."
-          attachments: []
-          questions: []
+          content: |
+            I'll ping you if another transaction pops up. Check back!
+          attachments: []         
+          questions: []            

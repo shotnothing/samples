@@ -469,6 +469,10 @@ tasks:
               type: Download
               display_name: "LA_005_CA.pdf"
               uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/LA_005_CA.pdf
+              - attachment_uid: guidebook
+              type: Download
+              display_name: "Guidebook.pdf"
+              uri: https://raw.githubusercontent.com/Blimperoo/OGP_PM_Assets/main/AFC_Handbook.pdf
           questions:
             - type: TextInput
               question_uid: input-loan-id
@@ -526,8 +530,151 @@ tasks:
           role: Jean (AMLRO)
           chatroom: AMLRO
           created_at: 0
+          next_message: task-1-6
+          content: ""
+          attachments: []
+          questions: []
+          trigger: nexttask
+
+
+    - task_uid: task-1-6
+      task_type: assignment
+      day: 0
+      entry_point: msg-1-6-heya
+      start_at: 4650       # adjust as you like
+      duration: 1200
+
+      messages:
+        - message_uid: msg-1-6-heya
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-6-detail1
+          content: "Heya! Got another one!"
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-6-detail1
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-6-detail2
+          content: |
+            Transaction ID 304. We’re worried about the transfers between
+            ACC401-403. Joseph and Sarah are related, but another account,
+            Laura Smith, is also involved.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-6-detail2
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-6-detail3
+          content: |
+            Joseph sent two identical SGD8,000 payments to Laura in quick
+            succession. That’s odd, but not enough to freeze for now.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-6-detail3
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-6-detail4
+          content: |
+            Policy says we should re-confirm the relationship if this pattern
+            continues. If they’re family, we can tag that in the network, and we won't have to freeze it.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-6-detail4
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: msg-1-6-instructions
+          content: |
+            Open Link Analysis in OneLink (top-right), see if they overlap
+            in our database. If yes, add the “Family” relationship, then tell
+            me whether to Freeze or Release the transaction.
+          attachments: []
+          questions: []
+          trigger: automatic
+
+        - message_uid: msg-1-6-instructions
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          created_at: 0
+          next_message: null         
+          content: |
+            Type Freeze or Release below:
+          attachments: []
+          questions:
+            - type: TextInput
+              question_uid: input-304-freeze-release
+              display_label: "Freeze or Release"
+              correct_answer:
+                answer: "Release"
+                result_explanation: "Link analysis shows a likely family tie — no freeze."
+              next_message_if_wrong: msg-1-6-wrong
+            - type: DoneButton
+              question_uid: btn-304-submit
+          trigger: donebutton
+          message_choice:
+            correct_uid: msg-1-6-right
+            wrong_uid:   msg-1-6-wrong
+
+        - message_uid: msg-1-6-right
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          trigger: automatic
+          created_at: 0
+          next_message: msg-1-6-end
+          content: |
+            Great! Your intuition is on point. Link analysis shows they share
+            last name, phone, and address, and both connect to Sarah — looks
+            like family.
+          attachments: []
+          questions: []
+
+        - message_uid: msg-1-6-wrong
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          trigger: automatic
+          created_at: 0
+          next_message: msg-1-6-end
+          content: |
+            I see why you froze it, but the evidence leans toward a family link
+            rather than anything criminal. Link analysis shows shared last
+            name, phone, and address, and both have a familial relationship to Sarah — looks
+            like family.
+          attachments: []
+          questions: []
+
+        - message_uid: msg-1-6-end
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          trigger: donebutton          
+          created_at: 0
+          next_message: msg-1-6-exit    
+          content: |
+            KYC Ops will message the customers to confirm. Thanks! This should
+            be it for the day.
+          attachments: []
+          questions:
+            - type: DoneButton
+              question_uid: "See you tomorrow!"
+
+        - message_uid: msg-1-6-exit
+          role: Francesca (TM Analyst)
+          chatroom: TM Desk
+          trigger: terminal
+          created_at: 0
           next_message: null
           content: ""
           attachments: []
           questions: []
-          trigger: terminal

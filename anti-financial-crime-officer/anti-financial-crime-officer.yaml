@@ -474,8 +474,7 @@ tasks:
               question_uid: input-loan-id
               display_label: "ID to revert"
             - type: DoneButton
-              question_uid: btn-loan-submit
-              display_label: "Submit"
+              question_uid: "Submit"
           trigger: donebutton
           message_choice:
             answers:

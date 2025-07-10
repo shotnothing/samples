@@ -477,12 +477,13 @@ tasks:
             - type: TextInput
               question_uid: input-loan-id
               display_label: "ID to revert"
+              correct_answer:
+                answer: "LA_003_UK"
+                result_explanation: "Look closely at the year!"
             - type: DoneButton
               question_uid: "Submit"
           trigger: donebutton
           message_choice:
-            answers:
-              input-loan-id: "LA_003_UK"
             correct_uid: msg-1-4-correct
             wrong_uid: msg-1-4-incorrect
 

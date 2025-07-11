@@ -532,7 +532,7 @@ tasks:
           role: Jean (AMLRO)
           chatroom: AMLRO
           created_at: 0
-          next_message: task-1-6
+          next_message: msg-1-6-heya
           content: ""
           attachments: []
           questions: []

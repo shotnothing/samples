@@ -4,7 +4,7 @@ display_category: Compliance
 display_description_short: Learn about Anti-Financial Crime teams and how they function.
 display_description_long: |
   Anti-Financial-Crime Officers sit at the front line of a bank’s defence against money-laundering and sanctions breaches.
-You’ll monitor live payments for red flags, investigate unusual customer activity, and decide whether to clear or escalate suspicious transactions.
+  You’ll monitor live payments for red flags, investigate unusual customer activity, and decide whether to clear or escalate suspicious transactions.
 display_cover_image_uri: https://github.com/shotnothing/dayone-watercolor-placeholders/blob/main/Anti-Financial-Crime%20Officer%2C%20Watercolor.jpeg?raw=true
 display_skills_required:
   - Analytical reasoning
